@@ -3,6 +3,11 @@ var border = 150;
 var widthButton = 200, heightButton = 50;
 var coordXButton = 100;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
+let menuTitle;
+
+function preload(){
+  menuTitle = loadImage('/img/menu_title.png');
+}
 
 function setup() {
   createCanvas(400, 400);
@@ -24,12 +29,13 @@ function Menu() {
   //background color
   background(106, 90, 205);
 
+  image(menuTitle, 20, 50);
+
   noStroke(); //remove all borders
 
   //style of game title
   textSize(32);
-  fill(255, 255, 255);
-  text("Sex Education", 95, 100);
+
 
   //menu buttons
   fill(250, 128, 114);
@@ -90,6 +96,35 @@ function Game() {
   text("Tela do Game", 100, 50);
   textSize(15);
   text("Coming Soon", 150, 200);
+
+  //removing border
+  noStroke();
+  fill(250, 128, 114);
+
+  //back button
+  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
+  fill(255, 255, 255);
+  textSize(20);
+  text("Voltar", 280, 363);
+
+  //adding border on mouse hover
+  noFill();
+  border = 330;
+  stroke(255, 255, 255);
+  rect(230, border, widthButtonBack, heightButton, 10);
+
+  if (
+    mouseX >= coordXButtonBack &&
+    mouseX <= coordXButtonBack + widthButtonBack &&
+    mouseY >= coordYButtonBack &&
+    mouseY <= coordYButtonBack + heightButton
+  ) {
+    border = 330;
+    if (mouseIsPressed) {
+      screen = 0;
+      border = 150;
+    }
+  }
 }
 
 function Information() {
@@ -107,10 +142,10 @@ function Information() {
   fill(250, 128, 114);
 
   //back button
-  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton,10);
-  fill(255,255,255);
+  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
+  fill(255, 255, 255);
   textSize(20);
-  text("Voltar", 280,363);
+  text("Voltar", 280, 363);
 
   //adding border on mouse hover
   noFill();
@@ -133,7 +168,6 @@ function Information() {
 
 }
 
-//adicionando comentário teste para commit.
 function Credits() {
   //background color
   background(255, 0, 255);
@@ -144,32 +178,32 @@ function Credits() {
   textSize(15);
   text("Coming Soon", 150, 200);
 
-   //removing border
-   noStroke();
-   fill(250, 128, 114);
- 
-   //back button
-   rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton,10);
-   fill(255,255,255);
-   textSize(20);
-   text("Voltar", 280,363);
- 
-   //adding border on mouse hover
-   noFill();
-   border = 330;
-   stroke(255, 255, 255);
-   rect(230, border, widthButtonBack, heightButton, 10);
- 
-   if (
-     mouseX >= coordXButtonBack &&
-     mouseX <= coordXButtonBack + widthButtonBack &&
-     mouseY >= coordYButtonBack &&
-     mouseY <= coordYButtonBack + heightButton
-   ) {
-     border = 330;
-     if (mouseIsPressed) {
-       screen = 0;
-       border = 150;
-     }
-   }
+  //removing border
+  noStroke();
+  fill(250, 128, 114);
+
+  //back button
+  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
+  fill(255, 255, 255);
+  textSize(20);
+  text("Voltar", 280, 363);
+
+  //adding border on mouse hover
+  noFill();
+  border = 330;
+  stroke(255, 255, 255);
+  rect(230, border, widthButtonBack, heightButton, 10);
+
+  if (
+    mouseX >= coordXButtonBack &&
+    mouseX <= coordXButtonBack + widthButtonBack &&
+    mouseY >= coordYButtonBack &&
+    mouseY <= coordYButtonBack + heightButton
+  ) {
+    border = 330;
+    if (mouseIsPressed) {
+      screen = 0;
+      border = 150;
+    }
+  }
 }
