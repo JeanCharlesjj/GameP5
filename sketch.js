@@ -133,6 +133,7 @@ function Information() {
 
 }
 
+//adicionando comentário teste para commit.
 function Credits() {
   //background color
   background(255, 0, 255);
