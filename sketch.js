@@ -5,9 +5,9 @@ var coordXButton = 100;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
 let menuTitle;
 
-function preload(){
+/*function preload(){
   menuTitle = loadImage('/img/menu_title.png');
-}
+}*/
 
 function setup() {
   createCanvas(400, 400);
@@ -29,14 +29,13 @@ function Menu() {
   //background color
   background(106, 90, 205);
 
-  image(menuTitle, 20, 50);
+  //image(menuTitle, 20, 50);
+  //style of text
+  textSize(30);
+  text("Título do Game", 100, 75);
 
   noStroke(); //remove all borders
-
-  //style of game title
-  textSize(32);
-
-
+  
   //menu buttons
   fill(250, 128, 114);
   rect(coordXButton, 150, widthButton, heightButton, 10); //Jogar
