@@ -3,11 +3,12 @@ var border = 150;
 var widthButton = 200, heightButton = 50;
 var coordXButton = 100;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
-let menuTitle;
+let menuTitle, menu_background;
 
-/*function preload(){
+function preload(){
+  menu_background = loadImage('/img/menu_background.png');
   menuTitle = loadImage('/img/menu_title.png');
-}*/
+}
 
 function setup() {
   createCanvas(400, 400);
@@ -29,10 +30,12 @@ function Menu() {
   //background color
   background(106, 90, 205);
 
-  //image(menuTitle, 20, 50);
+  
+  image(menu_background, 0, 0);
+  image(menuTitle, 45, 45);
   //style of text
   textSize(30);
-  text("Título do Game", 100, 75);
+  //text("Título do Game", 100, 75);
 
   noStroke(); //remove all borders
   
