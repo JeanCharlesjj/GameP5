@@ -3,11 +3,13 @@ var border = 150;
 var widthButton = 200, heightButton = 50;
 var coordXButton = 100;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
-let menuTitle, menu_background;
+var coordY_PlayButton = 150;
+let menuTitle, menu_background, play_button;
 
 function preload(){
   menu_background = loadImage('/img/menu_background.png');
   menuTitle = loadImage('/img/menu_title.png');
+  play_button = loadImage('/img/play_button.png')
 }
 
 function setup() {
@@ -30,7 +32,6 @@ function Menu() {
   //background color
   background(106, 90, 205);
 
-  
   image(menu_background, 0, 0);
   image(menuTitle, 45, 45);
   //style of text
@@ -41,13 +42,14 @@ function Menu() {
   
   //menu buttons
   fill(250, 128, 114);
-  rect(coordXButton, 150, widthButton, heightButton, 10); //Jogar
+  //rect(coordXButton, 150, widthButton, heightButton, 10); //Jogar
+  image(play_button, coordXButton, coordY_PlayButton);
   rect(coordXButton, 220, widthButton, heightButton, 10); //Informações
   rect(coordXButton, 290, widthButton, heightButton, 10); //Créditos
 
   //Style and text of buttons
   fill(255, 255, 0);
-  text("Jogar", 160, 188);
+  //text("Jogar", 160, 188);
   text("Informações", 110, 255);
   text("Créditos", 140, 325);
 
@@ -62,7 +64,7 @@ function Menu() {
     mouseY >= 150 &&
     mouseY <= 200
   ) {
-    border = 150;
+    coordY_PlayButton = 145;
     if (mouseIsPressed) {
       screen = 1;
     }
@@ -86,6 +88,8 @@ function Menu() {
     if (mouseIsPressed) {
       screen = 3;
     }
+  }else {
+    coordY_PlayButton = 150;
   }
 }
 
