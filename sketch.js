@@ -3,13 +3,15 @@ var border = 150;
 var widthButton = 200, heightButton = 50;
 var coordXButton = 100;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
-var coordY_PlayButton = 150;
-let menuTitle, menu_background, play_button;
+var coordY_PlayButton = 150, coordY_OptionButton = 220, coordY_CreditsButton = 290;
+let menuTitle, menu_background, play_button, option_button, credtis_button;
 
 function preload(){
   menu_background = loadImage('/img/menu_background.png');
   menuTitle = loadImage('/img/menu_title.png');
-  play_button = loadImage('/img/play_button.png')
+  play_button = loadImage('/img/play_button.png');
+  option_button = loadImage('/img/option_button.png');
+  credtis_button = loadImage('img/credits_button.png');
 }
 
 function setup() {
@@ -44,19 +46,21 @@ function Menu() {
   fill(250, 128, 114);
   //rect(coordXButton, 150, widthButton, heightButton, 10); //Jogar
   image(play_button, coordXButton, coordY_PlayButton);
-  rect(coordXButton, 220, widthButton, heightButton, 10); //Informações
-  rect(coordXButton, 290, widthButton, heightButton, 10); //Créditos
+  //rect(coordXButton, 220, widthButton, heightButton, 10); //Informações
+  image(option_button, coordXButton, coordY_OptionButton)
+  //rect(coordXButton, 290, widthButton, heightButton, 10); //Créditos
+  image(credtis_button, coordXButton, coordY_CreditsButton)
 
   //Style and text of buttons
   fill(255, 255, 0);
   //text("Jogar", 160, 188);
-  text("Informações", 110, 255);
-  text("Créditos", 140, 325);
+  //text("Informações", 110, 255);
+  //text("Créditos", 140, 325);
 
   //viewing button border
-  noFill();
+ /* noFill();
   stroke(255, 255, 255);
-  rect(100, border, widthButton, heightButton, 10);
+  rect(100, border, widthButton, heightButton, 10);*/
 
   if (
     mouseX >= coordXButton &&
@@ -74,7 +78,7 @@ function Menu() {
     mouseY >= 220 &&
     mouseY <= 270
   ) {
-    border = 220;
+    coordY_OptionButton = 215;
     if (mouseIsPressed) {
       screen = 2;
     }
@@ -84,12 +88,14 @@ function Menu() {
     mouseY >= 290 &&
     mouseY <= 330
   ) {
-    border = 290;
+    coordY_CreditsButton = 285;
     if (mouseIsPressed) {
       screen = 3;
     }
   }else {
     coordY_PlayButton = 150;
+    coordY_OptionButton = 220;
+    coordY_CreditsButton = 290;
   }
 }
 
