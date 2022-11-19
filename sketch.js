@@ -1,21 +1,21 @@
 var screen = 0;
 var border = 150;
 var widthButton = 200, heightButton = 50;
-var coordXButton = 100;
+var coordXButton = 180;
 var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
-var coordY_PlayButton = 150, coordY_OptionButton = 220, coordY_CreditsButton = 290;
+var coordY_PlayButton = 180, coordY_OptionButton = 270, coordY_CreditsButton = 360;
 let menuTitle, menu_background, play_button, option_button, credtis_button;
 
 function preload(){
   menu_background = loadImage('/img/menu_background.png');
   menuTitle = loadImage('/img/menu_title.png');
   play_button = loadImage('/img/play_button.png');
-  option_button = loadImage('/img/option_button.png');
-  credtis_button = loadImage('img/credits_button.png');
+  option_button = loadImage('/img/info_button.png');
+  credtis_button = loadImage('img/credt_button.png');
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
 }
 
 function draw() {
@@ -35,67 +35,48 @@ function Menu() {
   background(106, 90, 205);
 
   image(menu_background, 0, 0);
-  image(menuTitle, 45, 45);
-  //style of text
-  textSize(30);
-  //text("Título do Game", 100, 75);
-
-  noStroke(); //remove all borders
+  image(menuTitle, 110, 70);
   
   //menu buttons
-  fill(250, 128, 114);
-  //rect(coordXButton, 150, widthButton, heightButton, 10); //Jogar
-  image(play_button, coordXButton, coordY_PlayButton);
-  //rect(coordXButton, 220, widthButton, heightButton, 10); //Informações
-  image(option_button, coordXButton, coordY_OptionButton)
-  //rect(coordXButton, 290, widthButton, heightButton, 10); //Créditos
-  image(credtis_button, coordXButton, coordY_CreditsButton)
-
-  //Style and text of buttons
-  fill(255, 255, 0);
-  //text("Jogar", 160, 188);
-  //text("Informações", 110, 255);
-  //text("Créditos", 140, 325);
-
-  //viewing button border
- /* noFill();
-  stroke(255, 255, 255);
-  rect(100, border, widthButton, heightButton, 10);*/
+ 
+  image(play_button, coordXButton, coordY_PlayButton); // botão jogar
+  image(option_button, coordXButton, coordY_OptionButton) // botão opções
+  image(credtis_button, coordXButton, coordY_CreditsButton) // botão Créditos
 
   if (
     mouseX >= coordXButton &&
     mouseX <= coordXButton + widthButton &&
-    mouseY >= 150 &&
-    mouseY <= 200
+    mouseY >= 180 &&
+    mouseY <= 240
   ) {
-    coordY_PlayButton = 145;
+    coordY_PlayButton = 175;
     if (mouseIsPressed) {
       screen = 1;
     }
   } else if (
     mouseX >= coordXButton &&
     mouseX <= coordXButton + widthButton &&
-    mouseY >= 220 &&
-    mouseY <= 270
+    mouseY >= 270 &&
+    mouseY <= 330
   ) {
-    coordY_OptionButton = 215;
+    coordY_OptionButton = 265;
     if (mouseIsPressed) {
       screen = 2;
     }
   } else if (
     mouseX >= coordXButton &&
     mouseX <= coordXButton + widthButton &&
-    mouseY >= 290 &&
-    mouseY <= 330
+    mouseY >= 360 &&
+    mouseY <= 400
   ) {
-    coordY_CreditsButton = 285;
+    coordY_CreditsButton = 355;
     if (mouseIsPressed) {
       screen = 3;
     }
   }else {
-    coordY_PlayButton = 150;
-    coordY_OptionButton = 220;
-    coordY_CreditsButton = 290;
+    coordY_PlayButton = 180;
+    coordY_OptionButton = 270; 
+    coordY_CreditsButton = 360;
   }
 }
 
