@@ -1,12 +1,13 @@
-var screen = 3;
+var screen = 1;
 var border = 150;
 var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
 var coordXButtonBack = 340, coordYButtonBack = 500, widthButtonBack = 240;
 var coordY_PlayButton = 180, coordY_OptionButton = 270, coordY_CreditsButton = 360;
 var coodX_player = 260, coodY_player = 500;
-let menuTitle, menu_background, play_button, option_button, credtis_button, back_button, player = [];
-var player_frame = 0, tempo = 0;
+let menuTitle, menu_background, play_button, option_button, credtis_button, back_button; 
+var player = [], background_game = [];
+var player_frame = 1, time_frame_player = 40,time_frame_background = 40, background_frame = 1;
 
 function preload(){
   menu_background = loadImage('/img/menu_background.png');
@@ -16,10 +17,13 @@ function preload(){
   credtis_button = loadImage('/img/credt_button.png');
   back_button = loadImage('/img/back_button.png');
 
-  for(var i = 1; i < 6;i++){
-    player[i] = loadImage('/img/player/player'+i+'.png');
+  for(i = 1; i < 6;i++){
+    player[i] = loadImage('./img/player/player'+i+'.png');
   }
-  //player = loadImage('/img/player/player1.png');
+
+  for(i = 1; i < 10;i++){
+    background_game[i] = loadImage('./img/background_game/Sprite-000'+i+'.png');
+  }
 
 }
 
@@ -93,15 +97,26 @@ function Game() {
   //background color
   background(106, 90, 205);
 
-  tempo++;
-
-  if(tempo > 10){
-    player_frame++;
-    tempo = 0;
+  image(background_game[background_frame], 0, 0);
+  if(time_frame_background > 9){
+    background_frame++;
+    if(background_frame > 9){
+      background_frame = 1;
+    }
+    time_frame_background = 0;
   }
 
-  image(menu_background, 0, 0);
   image(player[player_frame], coodX_player, coodY_player);
+
+  if(time_frame_player > 10){
+    player_frame++;
+    if(player_frame > 4){
+      player_frame = 1;
+    }
+    time_frame_player = 0;
+  }
+  time_frame_player++;
+  time_frame_background++;
 }
 
 function Information() {
