@@ -1,4 +1,5 @@
-var screen = 1;
+//Constantes do game
+var screen = 0;
 var border = 150;
 var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
@@ -9,7 +10,9 @@ let menuTitle, menu_background, play_button, option_button, credtis_button, back
 var player = [], background_game = [];
 var player_frame = 1, time_frame_player = 40,time_frame_background = 40, background_frame = 1;
 
+//Carregamento das imagens
 function preload(){
+  //Imagens estáticas
   menu_background = loadImage('/img/menu_background.png');
   menuTitle = loadImage('/img/menu_title.png');
   play_button = loadImage('/img/play_button.png');
@@ -17,10 +20,12 @@ function preload(){
   credtis_button = loadImage('/img/credt_button.png');
   back_button = loadImage('/img/back_button.png');
 
+  //Animação do jogador.
   for(i = 1; i < 6;i++){
     player[i] = loadImage('./img/player/player'+i+'.png');
   }
 
+  //Animação da background da fase jogável.
   for(i = 1; i < 10;i++){
     background_game[i] = loadImage('./img/background_game/Sprite-000'+i+'.png');
   }
@@ -97,6 +102,7 @@ function Game() {
   //background color
   background(106, 90, 205);
 
+  //Animação do background
   image(background_game[background_frame], 0, 0);
   if(time_frame_background > 9){
     background_frame++;
@@ -106,8 +112,8 @@ function Game() {
     time_frame_background = 0;
   }
 
+  //Animação do jogador
   image(player[player_frame], coodX_player, coodY_player);
-
   if(time_frame_player > 10){
     player_frame++;
     if(player_frame > 4){
@@ -120,10 +126,10 @@ function Game() {
 }
 
 function Information() {
-  background(106, 90, 205);
-
+  //Background da tela de informações
   image(menu_background, 0, 0);
 
+  //Botão de voltar
   image(back_button, coordXButtonBack, coordYButtonBack);
   if (
     mouseX >= coordXButtonBack &&
@@ -141,10 +147,10 @@ function Information() {
 }
 
 function Credits() {
-  background(106, 90, 205);
-
+  //Background da tela de informações
   image(menu_background, 0, 0);
 
+  //Botão de voltar
   image(back_button, coordXButtonBack, coordYButtonBack);
   if (
     mouseX >= coordXButtonBack &&
