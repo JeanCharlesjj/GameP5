@@ -1,5 +1,5 @@
 //Constantes do game
-var screen = 0;
+var screen = 1;
 var border = 150;
 var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
@@ -9,6 +9,7 @@ var coodX_player = 260, coodY_player = 500;
 let menuTitle, menu_background, play_button, option_button, credtis_button, back_button; 
 var player = [], background_game = [];
 var player_frame = 1, time_frame_player = 40,time_frame_background = 40, background_frame = 1;
+var cont = 0;
 
 //Carregamento das imagens
 function preload(){
@@ -123,6 +124,23 @@ function Game() {
   }
   time_frame_player++;
   time_frame_background++;
+
+  if(keyIsPressed === true){
+    keyPressed();
+  }
+}
+
+function keyPressed(){
+  if(key === 'a'){
+    coodX_player -= 2;
+  }else if(key === 'd'){
+    coodX_player += 2;
+  }else if(key === 'v'){
+    fill(255,255,255);
+    rect(coodX_player + 35,((coodY_player - 20) - cont), 10,10);
+    cont+= 5;
+  }
+
 }
 
 function Information() {
