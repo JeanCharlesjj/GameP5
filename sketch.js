@@ -1,11 +1,11 @@
-var screen = 1;
+var screen = 3;
 var border = 150;
-var widthButton = 200, heightButton = 50;
+var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
-var coordXButtonBack = 230, coordYButtonBack = 330, widthButtonBack = 150;
+var coordXButtonBack = 340, coordYButtonBack = 500, widthButtonBack = 240;
 var coordY_PlayButton = 180, coordY_OptionButton = 270, coordY_CreditsButton = 360;
 var coodX_player = 260, coodY_player = 500;
-let menuTitle, menu_background, play_button, option_button, credtis_button, player = [];
+let menuTitle, menu_background, play_button, option_button, credtis_button, back_button, player = [];
 var player_frame = 0, tempo = 0;
 
 function preload(){
@@ -14,6 +14,7 @@ function preload(){
   play_button = loadImage('/img/play_button.png');
   option_button = loadImage('/img/info_button.png');
   credtis_button = loadImage('/img/credt_button.png');
+  back_button = loadImage('/img/back_button.png');
 
   for(var i = 1; i < 6;i++){
     player[i] = loadImage('/img/player/player'+i+'.png');
@@ -101,114 +102,46 @@ function Game() {
 
   image(menu_background, 0, 0);
   image(player[player_frame], coodX_player, coodY_player);
-
-  //back button
-
-  /*rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
-  fill(255, 255, 255);
-  textSize(20);
-  text("Voltar", 280, 363);
-  
-  //adding border on mouse hover
-  noFill();
-  border = 330;
-  stroke(255, 255, 255);
-  rect(230, border, widthButtonBack, heightButton, 10);
-  
-  if (
-    mouseX >= coordXButtonBack &&
-    mouseX <= coordXButtonBack + widthButtonBack &&
-    mouseY >= coordYButtonBack &&
-    mouseY <= coordYButtonBack + heightButton
-  ) {
-    border = 330;
-    if (mouseIsPressed) {
-      screen = 0;
-      border = 150;
-    }
-  }*/
-
-  
-
 }
 
 function Information() {
-  //background color
-  background(105, 89, 205);
+  background(106, 90, 205);
 
-  //style of text
-  textSize(25);
-  text("Tela de Informações do Game", 20, 50);
-  textSize(15);
-  text("Coming Soon", 150, 200);
+  image(menu_background, 0, 0);
 
-  //removing border
-  noStroke();
-  fill(250, 128, 114);
-
-  //back button
-  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
-  fill(255, 255, 255);
-  textSize(20);
-  text("Voltar", 280, 363);
-
-  //adding border on mouse hover
-  noFill();
-  border = 330;
-  stroke(255, 255, 255);
-  rect(230, border, widthButtonBack, heightButton, 10);
-
+  image(back_button, coordXButtonBack, coordYButtonBack);
   if (
     mouseX >= coordXButtonBack &&
     mouseX <= coordXButtonBack + widthButtonBack &&
     mouseY >= coordYButtonBack &&
     mouseY <= coordYButtonBack + heightButton
   ) {
-    border = 330;
+    coordYButtonBack = 495;
     if (mouseIsPressed) {
       screen = 0;
-      border = 150;
     }
+  }else{
+    coordYButtonBack = 500;
   }
-
 }
 
 function Credits() {
-  //background color
-  background(255, 0, 255);
+  background(106, 90, 205);
 
-  //style of text
-  textSize(25);
-  text("Tela de Créditos do Game", 50, 50);
-  textSize(15);
-  text("Coming Soon", 150, 200);
+  image(menu_background, 0, 0);
 
-  //removing border
-  noStroke();
-  fill(250, 128, 114);
-
-  //back button
-  rect(coordXButtonBack, coordYButtonBack, widthButtonBack, heightButton, 10);
-  fill(255, 255, 255);
-  textSize(20);
-  text("Voltar", 280, 363);
-
-  //adding border on mouse hover
-  noFill();
-  border = 330;
-  stroke(255, 255, 255);
-  rect(230, border, widthButtonBack, heightButton, 10);
-
+  image(back_button, coordXButtonBack, coordYButtonBack);
   if (
     mouseX >= coordXButtonBack &&
     mouseX <= coordXButtonBack + widthButtonBack &&
     mouseY >= coordYButtonBack &&
     mouseY <= coordYButtonBack + heightButton
   ) {
-    border = 330;
+    coordYButtonBack = 495;
     if (mouseIsPressed) {
       screen = 0;
-      border = 150;
     }
+  }else{
+    coordYButtonBack = 500;
   }
 }
