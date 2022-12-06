@@ -1,5 +1,5 @@
 //Constantes do game
-var screen = 1;
+var screen = 0;
 var border = 150;
 var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
@@ -125,22 +125,23 @@ function Game() {
   time_frame_player++;
   time_frame_background++;
 
-  if(keyIsPressed === true){
-    keyPressed();
-  }
+  Move()
 }
 
-function keyPressed(){
-  if(key === 'a'){
+function Move(){
+  if(keyIsDown(65)){
     coodX_player -= 2;
-  }else if(key === 'd'){
+  }else if(keyIsDown(68)){
     coodX_player += 2;
-  }else if(key === 'v'){
-    fill(255,255,255);
-    rect(coodX_player + 35,((coodY_player - 20) - cont), 10,10);
-    cont+= 5;
+  }else if(keyIsDown(86)){
+    for(i = 0;i<100;i++){
+      fill(255,255,255);
+      rect(coodX_player + 35,((coodY_player - 20) - cont), 10,10);
+      cont+= 5;
+    }
+  }else if(keyIsDown(27)){
+    screen = 0;
   }
-
 }
 
 function Information() {
