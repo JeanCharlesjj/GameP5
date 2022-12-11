@@ -1,5 +1,5 @@
 //Constantes do game
-var screen = 0;
+var screen = 1;
 var border = 150;
 var widthButton = 200, heightButton = 60;
 var coordXButton = 180;
@@ -10,6 +10,7 @@ let menuTitle, menu_background, play_button, option_button, credtis_button, back
 var player = [], background_game = [];
 var player_frame = 1, time_frame_player = 40,time_frame_background = 40, background_frame = 1;
 var cont = 0;
+var isShooting = false, coordX_shoot, coordY_shoot;
 
 //Carregamento das imagens
 function preload(){
@@ -126,23 +127,38 @@ function Game() {
   time_frame_background++;
 
   Move()
+  Shoot();
 }
 
 function Move(){
   if(keyIsDown(65)){
-    coodX_player -= 2;
+    coodX_player -= 5;
   }else if(keyIsDown(68)){
-    coodX_player += 2;
-  }else if(keyIsDown(86)){
-    for(i = 0;i<100;i++){
-      fill(255,255,255);
-      rect(coodX_player + 35,((coodY_player - 20) - cont), 10,10);
-      cont+= 5;
-    }
+    coodX_player += 5;
   }else if(keyIsDown(27)){
     screen = 0;
   }
 }
+
+function Shoot(){  
+  if(keyIsDown(UP_ARROW) && isShooting == false){
+    coordX_shoot = coodX_player + 35;
+    coordY_shoot = coodY_player - 20;
+    isShooting = true;
+  }
+
+  if(isShooting){
+    fill(255,255,255);
+    ellipse(coordX_shoot,coordY_shoot, 10,10);
+    coordY_shoot -= 25;
+
+      if(coordY_shoot < 0){
+        isShooting = false;
+      }
+  }
+}
+
+
 
 function Information() {
   //Background da tela de informações
