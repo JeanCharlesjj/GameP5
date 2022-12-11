@@ -1,4 +1,4 @@
-//Constantes do game
+//Constantes e variáveis do game
 var screen = 1;
 var border = 150;
 var widthButton = 200, heightButton = 60;
