@@ -51,18 +51,17 @@ function draw() {
 }
 
 function Menu() {
-  //background color
-  background(106, 90, 205);
-
+  //Imagem de fundo
   image(menu_background, 0, 0);
+  //Imagem do título
   image(menuTitle, 110, 70);
   
-  //menu buttons
- 
+  //Botões do menu principal
   image(play_button, coordXButton, coordY_PlayButton); // botão jogar
   image(option_button, coordXButton, coordY_OptionButton) // botão opções
   image(credtis_button, coordXButton, coordY_CreditsButton) // botão Créditos
 
+  //Colisões com os botões do Menu Principal
   if (
     mouseX >= coordXButton &&
     mouseX <= coordXButton + widthButton &&
@@ -126,32 +125,39 @@ function Game() {
   time_frame_player++;
   time_frame_background++;
 
+  //Movimentação do jogador
   Move()
+  //Animação de disparos
   Shoot();
 }
 
+//Função de movimentação do jogador
 function Move(){
-  if(keyIsDown(65)){
+  if(keyIsDown(65)){ //Tecla "A"
     coodX_player -= 5;
-  }else if(keyIsDown(68)){
+  }else if(keyIsDown(68)){ //Tecla "D"
     coodX_player += 5;
-  }else if(keyIsDown(27)){
+  }else if(keyIsDown(27)){ //Tecla "ESC"
     screen = 0;
   }
 }
 
+//Função de disparos
 function Shoot(){  
+  //Caso aperta a "setinha pra cima do teclado" e a função de disparo esteja desabilitada
   if(keyIsDown(UP_ARROW) && isShooting == false){
+    //Receba as coordenadas de onde o tiro vai partir
     coordX_shoot = coodX_player + 35;
     coordY_shoot = coodY_player - 20;
+    //Habilite o disparo
     isShooting = true;
   }
 
+  //Caso o disparo estaja habilitado, dispare
   if(isShooting){
-    fill(255,255,255);
     ellipse(coordX_shoot,coordY_shoot, 10,10);
     coordY_shoot -= 25;
-
+      //Quando o disparo estiver no fim, desabilite o disparo para que o fluxo volte a acontecer
       if(coordY_shoot < 0){
         isShooting = false;
       }
